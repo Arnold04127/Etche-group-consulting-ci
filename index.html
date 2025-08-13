@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etche Groupe Consulting - De la CE2 à la Terminale</title>
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-text {
+            text-align: left;
+        }
+
+        .logo-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+        }
+
+        .nav-logo {
+            font-weight: 700;
+            color: #1e3c72;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #1e3c72;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #1e3c72;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Slider dangereux */
+        .slider-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 3rem auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            height: 500px;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem;
+            z-index: 10;
+        }
+
+        .slide h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide p {
+            font-size: 1.1rem;
+            max-width: 70%;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide-1 {
+            background: url('https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+        }
+
+        .slide-2 {
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+        }
+
+        .slide-3 {
+            background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+        }
+
+        .slide-4 {
+            background: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.3s;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .slider-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        #prevBtn {
+            left: 20px;
+        }
+
+        #nextBtn {
+            right: 20px;
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        /* Sections niveaux */
+        .levels-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .levels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .level-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .level-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .level-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .level-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .level-card:hover .level-img img {
+            transform: scale(1.1);
+        }
+
+        .level-content {
+            padding: 1.5rem;
+        }
+
+        .level-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .level-content p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .level-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .level-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(30, 60, 114, 0.3);
+        }
+
+        /* Section approche pédagogique */
+        .approach {
+            background-color: #1e3c72;
+            color: white;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+        }
+
+        .approach-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .approach-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .approach-content p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .approach-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .feature p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .approach-img {
+            position: relative;
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .approach-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Témoignages */
+        .testimonials {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(30, 60, 114, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Formulaire de contact */
+        .contact-form {
+            background-color: white;
+            padding: 4rem 2rem;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #1e3c72;
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            gap: 1rem;
+        }
+
+        .btn-paiement {
+            background: linear-gradient(to right, #4CAF50, #2E7D32);
+        }
+
+        .enfant-info {
+            background: #f5f7fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #1e3c72;
+        }
+
+        .enfant-title {
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f1c3a;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, #2a5298, #1e3c72);
+            bottom: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+
+        .footer-col p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #1e3c72;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Animation des slides */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-content {
+            animation: slideIn 0.8s ease-out 0.3s both;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .approach-container {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-img {
+                height: 300px;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+            }
+
+            .nav-links li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .slider-container {
+                height: 400px;
+            }
+
+            .slide h2 {
+                font-size: 2rem;
+            }
+
+            .slide p {
+                max-width: 100%;
+            }
+
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn, .btn-paiement {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            .logo-text {
+                text-align: center;
+            }
+
+            .levels-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slider-container {
+                height: 350px;
+            }
+
+            .slide-content {
+                padding: 1rem;
+            }
+
+            .slide h2 {
+                font-size: 1.8rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#1e3c72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M12 8V16" stroke="#1e3c72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 12H16" stroke="#1e3c72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="logo-text">
+                <h1>Etche Groupe Consulting</h1>
+                <p>Accompagnement scolaire de la CE2 à la Terminale</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">Etche Consulting</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#niveaux">Nos niveaux</a></li>
+                <li><a href="#approche">Notre approche</a></li>
+                <li><a href="#inscription">Inscription</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="paiement.html">Paiement</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Slider dangereux -->
+        <div class="slider-container" id="accueil">
+            <div class="slider">
+                <div class="slide slide-1">
+                    <div class="slide-content">
+                        <h2>L'excellence éducative</h2>
+                        <p>Etche Groupe Consulting accompagne les élèves vers la réussite scolaire avec des méthodes pédagogiques innovantes.</p>
+                        <a href="#niveaux" class="btn">Découvrir nos programmes</a>
+                    </div>
+                </div>
+                <div class="slide slide-2">
+                    <div class="slide-content">
+                        <h2>De la CE2 à la Terminale</h2>
+                        <p>Un accompagnement personnalisé à chaque étape du parcours scolaire de votre enfant.</p>
+                        <a href="#niveaux" class="btn">Voir les niveaux</a>
+                    </div>
+                </div>
+                <div class="slide slide-3">
+                    <div class="slide-content">
+                        <h2>Des résultats exceptionnels</h2>
+                        <p>95% de nos élèves améliorent leurs résultats dès le premier trimestre.</p>
+                        <a href="#temoignages" class="btn">Lire les témoignages</a>
+                    </div>
+                </div>
+                <div class="slide slide-4">
+                    <div class="slide-content">
+                        <h2>Préparation aux examens</h2>
+                        <p>Stages intensifs et simulations pour le Brevet et le Baccalauréat.</p>
+                        <a href="#contact" class="btn">Nous contacter</a>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-btn" id="prevBtn">&#10094;</button>
+            <button class="slider-btn" id="nextBtn">&#10095;</button>
+            <div class="slider-indicators">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+        </div>
+
+        <!-- Section niveaux -->
+        <section class="levels-container" id="niveaux">
+            <div class="section-title">
+                <h2>Nos programmes par niveau</h2>
+            </div>
+            <div class="levels-grid">
+                <!-- Primaire -->
+                <div class="level-card">
+                    <div class="level-img">
+                        <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="École primaire">
+                    </div>
+                    <div class="level-content">
+                        <h3>Primaire (CE2 - CM2)</h3>
+                        <p>Un accompagnement adapté aux jeunes élèves pour consolider les bases fondamentales.</p>
+                        <ul>
+                            <li>Renforcement en français et mathématiques</li>
+                            <li>Méthodologie de travail</li>
+                            <li>Préparation à l'entrée au collège</li>
+                            <li>Ateliers ludiques et éducatifs</li>
+                        </ul>
+                        <a href="#inscription" class="btn">Inscrire mon enfant</a>
+                    </div>
+                </div>
+
+                <!-- Collège -->
+                <div class="level-card">
+                    <div class="level-img">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Collège">
+                    </div>
+                    <div class="level-content">
+                        <h3>Collège (6ème - 3ème)</h3>
+                        <p>Un soutien personnalisé pour s'adapter aux exigences du collège.</p>
+                        <ul>
+                            <li>Suivi pluridisciplinaire</li>
+                            <li>Préparation au Brevet</li>
+                            <li>Gestion du temps et organisation</li>
+                            <li>Stages intensifs pendant les vacances</li>
+                        </ul>
+                        <a href="#inscription" class="btn">Inscrire mon enfant</a>
+                    </div>
+                </div>
+
+                <!-- Lycée -->
+                <div class="level-card">
+                    <div class="level-img">
+                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lycée">
+                    </div>
+                    <div class="level-content">
+                        <h3>Lycée (2nde - Terminale)</h3>
+                        <p>Une préparation intensive pour les examens et l'enseignement supérieur.</p>
+                        <ul>
+                            <li>Spécialisation par filière</li>
+                            <li>Préparation au Baccalauréat</li>
+                            <li>Orientation post-bac</li>
+                            <li>Simulations d'épreuves</li>
+                        </ul>
+                        <a href="#inscription" class="btn">Inscrire mon enfant</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approche pédagogique -->
+        <section class="approach" id="approche">
+            <div class="approach-container">
+                <div class="approach-content">
+                    <h2>Notre approche pédagogique</h2>
+                    <p>Chez Etche Groupe Consulting, nous avons développé une méthode unique basée sur 3 piliers fondamentaux : personnalisation, excellence et bien-être.</p>
+                    
+                    <div class="approach-features">
+                        <div class="feature">
+                            <h3>Enseignants experts</h3>
+                            <p>Nos professeurs sont sélectionnés pour leur expertise et leur pédagogie.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Groupes réduits</h3>
+                            <p>Maximum 8 élèves par groupe pour un suivi personnalisé.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Bilan initial</h3>
+                            <p>Évaluation des besoins pour un programme sur mesure.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Suivi régulier</h3>
+                            <p>Comptes-rendus détaillés et entretiens avec les parents.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="approach-img">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Approche pédagogique">
+                </div>
+            </div>
+        </section>
+
+        <!-- Témoignages -->
+        <section class="testimonials" id="temoignages">
+            <div class="section-title">
+                <h2>Ils nous font confiance</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Grâce à Etche Consulting, ma fille a gagné en confiance et ses résultats ont considérablement progressé en seulement quelques mois. Je recommande vivement !</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sophie M.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sophie M.</h4>
+                            <p>Maman de Léa, 5ème</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="tesestimonial-content">
+                        <p> non entant que eleve labas</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thomas L.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Thomas L.</h4>
+                            <p>Ancien élève</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>En tant qu'enseignante, j'apprécie particulièrement la qualité pédagogique des intervenants et le sérieux de leur méthode. </p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Isabelle D.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Isabelle D.</h4>
+                            <p>Maman de Jules, CM2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Formulaire de contact et inscription -->
+        <section class="contact-form" id="inscription">
+            <div class="form-container">
+                <div class="section-title">
+                    <h2>Inscription et Contact</h2>
+                    <p>Remplissez ce formulaire pour nous contacter ou inscrire votre/vos enfant(s)</p>
+                </div>
+                
+                <form id="inscriptionForm">
+                    <div class="form-group">
+                        <label for="parent-name">Nom du parent/tuteur*</label>
+                        <input type="text" id="parent-name" name="parent-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parent-prenom">Prénom du parent/tuteur*</label>
+                        <input type="text" id="parent-prenom" name="parent-prenom" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Téléphone*</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Adresse complète*</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="ville">Ville*</label>
+                        <input type="text" id="ville" name="ville" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Nombre d'enfants à inscrire*</label>
+                        <select id="nb-enfants" name="nb-enfants" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4+">4 ou plus</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Dynamique : champs enfants -->
+                    <div id="enfants-container">
+                        <!-- Les champs pour le premier enfant seront ajoutés ici par JavaScript -->
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message complémentaire</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Envoyer la demande</button>
+                        <a href="paiement.html" class="btn btn-paiement">Procéder au paiement</a>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Etche Groupe Consulting</h3>
+                <p>Accompagnement scolaire personnalisé de la CE2 à la Terminale.</p>
+                <p>Notre mission : redonner confiance et goût d'apprendre à chaque élève.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Nos centres</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Abidjan</a></li>
+                    <li><a href="#">Bouaké</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact</h3>
+                <p>+225 07 57 64 36 35</p>
+                <p>jean.nogbou@iua.ci</p>
+                <p>Ouvert du lundi au samedi</p>
+                <p>8H - 20H</p>
+                <div class="social-links">
+                    <a href="#"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg></a>
+                    <a href="#"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path></svg></a>
+                    <a href="#"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Etche Groupe Consulting. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Slider dangereux
+        const slider = document.querySelector('.slider');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        
+        // Fonction pour aller à un slide spécifique
+        function goToSlide(index) {
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            currentSlide = index;
+            
+            // Mise à jour des indicateurs
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentSlide);
+            });
+        }
+        
+        // Slide suivant
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            goToSlide(currentSlide);
+        }
+        
+        // Slide précédent
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            goToSlide(currentSlide);
+        }
+        
+        // Événements
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Indicateurs cliquables
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => goToSlide(index));
+        });
+        
+        // Auto-slide
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        // Arrêt de l'auto-slide au survol
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        // Reprise de l'auto-slide
+        slider.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Animation au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Gestion du formulaire d'inscription
+        document.addEventListener('DOMContentLoaded', function() {
+            const nbEnfantsSelect = document.getElementById('nb-enfants');
+            const enfantsContainer = document.getElementById('enfants-container');
+            
+            // Fonction pour créer les champs pour un enfant
+            function createEnfantFields(index) {
+                return `
+                <div class="enfant-info">
+                    <h4 class="enfant-title">Enfant ${index + 1}</h4>
+                    <div class="form-group">
+                        <label for="enfant-nom-${index}">Nom*</label>
+                        <input type="text" id="enfant-nom-${index}" name="enfant-nom-${index}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="enfant-prenom-${index}">Prénom*</label>
+                        <input type="text" id="enfant-prenom-${index}" name="enfant-prenom-${index}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="enfant-classe-${index}">Classe/Niveau*</label>
+                        <select id="enfant-classe-${index}" name="enfant-classe-${index}" required>
+                            <option value="">Sélectionnez...</option>
+                            <option value="CE2">CE2</option>
+                            <option value="CM1">CM1</option>
+                            <option value="CM2">CM2</option>
+                            <option value="6eme">6ème</option>
+                            <option value="5eme">5ème</option>
+                            <option value="4eme">4ème</option>
+                            <option value="3eme">3ème</option>
+                            <option value="2nde">Seconde</option>
+                            <option value="1ere">Première</option>
+                            <option value="terminale">Terminale</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="enfant-ecole-${index}">École/Établissement actuel</label>
+                        <input type="text" id="enfant-ecole-${index}" name="enfant-ecole-${index}">
+                    </div>
+                    <div class="form-group">
+                        <label for="enfant-besoins-${index}">Besoins particuliers</label>
+                        <textarea id="enfant-besoins-${index}" name="enfant-besoins-${index}" rows="2"></textarea>
+                    </div>
+                </div>
+                `;
+            }
+            
+            // Mise à jour des champs enfants quand le nombre change
+            nbEnfantsSelect.addEventListener('change', function() {
+                const nbEnfants = parseInt(this.value === "4+" ? 4 : this.value);
+                enfantsContainer.innerHTML = '';
+                
+                for (let i = 0; i < nbEnfants; i++) {
+                    enfantsContainer.innerHTML += createEnfantFields(i);
+                }
+            });
+            
+            // Initialisation avec 1 enfant par défaut
+            enfantsContainer.innerHTML = createEnfantFields(0);
+            
+            // Gestion de la soumission du formulaire
+            document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Ici vous pourriez ajouter le code pour envoyer les données au serveur
+                alert('Formulaire soumis avec succès! Vous allez être redirigé vers la page de paiement.');
+                window.location.href = 'paiement.html';
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
