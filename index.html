@@ -907,6 +907,61 @@
                         </ul>
                         <a href="#inscription" class="btn">Inscrire mon enfant</a>
                     </div>
+                    </div>
+                <div class="slide slide-2">
+                    <div class="slide-content">
+                        <h2>De la 6e à la Terminale</h2>
+                        <p>Un accompagnement personnalisé à chaque étape du parcours scolaire de votre enfant.</p>
+                        <a href="#niveaux" class="btn">Voir les niveaux</a>
+                    </div>
+                </div>
+                <div class="slide slide-3">
+                    <div class="slide-content">
+                        <h2>Des résultats exceptionnels</h2>
+                        <p>95% de nos élèves améliorent leurs résultats dès le premier trimestre.</p>
+                        <a href="#temoignages" class="btn">Lire les témoignages</a>
+                    </div>
+                </div>
+                <div class="slide slide-4">
+                    <div class="slide-content">
+                        <h2>Préparation aux examens</h2>
+                        <p>Stages intensifs et simulations pour le Brevet et le Baccalauréat.</p>
+                        <a href="#contact" class="btn">Nous contacter</a>
+                    </div>
+                </div>
+            </div>
+            <button class="slider-btn" id="prevBtn">&#10094;</button>
+            <button class="slider-btn" id="nextBtn">&#10095;</button>
+            <div class="slider-indicators">
+                <div class="indicator active"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+                <div class="indicator"></div>
+            </div>
+        </div>
+
+        <!-- Section niveaux -->
+        <section class="levels-container" id="niveaux">
+            <div class="section-title">
+                <h2>Nos programmes par niveau</h2>
+            </div>
+            <div class="levels-grid">
+                <!-- Collège -->
+                <div class="level-card">
+                    <div class="level-img">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Collège">
+                    </div>
+                    <div class="level-content">
+                        <h3>Collège (6ème - 3ème)</h3>
+                        <p>Un soutien personnalisé pour s'adapter aux exigences du collège.</p>
+                        <ul>
+                            <li>Renforcement des acquis des élèves dans toutes les matières.</li>
+                            <li>Préparation au Brevet</li>
+                            <li>Gestion du temps et organisation</li>
+                           
+                        </ul>
+                        <a href="#inscription" class="btn">Inscrire mon enfant</a>
+                    </div>
                 </div>
 
                 <!-- Lycée -->
@@ -1300,6 +1355,9 @@
                         <label for="enfant-classe-${index}">Classe/Niveau*</label>
                         <select id="enfant-classe-${index}" name="enfant-classe-${index}" required>
                             <option value="">Sélectionnez...</option>
+                           <option value="CE2">CE2</option>
+                            <option value="CM1">CM1</option>
+                            <option value="CM2">CM2</option
                             <option value="6eme">6ème</option>
                             <option value="5eme">5ème</option>
                             <option value="4eme">4ème</option>
